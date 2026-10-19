@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Axiora Tech — Silk CRM | binosozcrm.tj</title>
+<meta name="description" content="Axiora Tech — профессиональное CRM-решение для строительных компаний и ЖК. Silk CRM: шахматка, касса, договоры, склад, бухгалтерия.">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <div class="logo-mark">A</div>
+      <span class="logo-text">Axiora<span class="logo-accent">Tech</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="#about"      class="nav-link" data-i18n="nav.about">О нас</a>
+      <a href="#modules"    class="nav-link" data-i18n="nav.modules">Модули</a>
+      <a href="#chess"      class="nav-link" data-i18n="nav.chess">Шахматка</a>
+      <a href="#services"   class="nav-link" data-i18n="nav.services">Услуги</a>
+      <a href="#calculator" class="nav-link" data-i18n="nav.calc">Цены</a>
+      <a href="#contact"    class="nav-link" data-i18n="nav.contact">Контакт</a>
+    </div>
+    <div class="nav-actions">
+      <div class="lang-switcher">
+        <button class="lang-btn active" onclick="setLang('ru')">RU</button>
+        <button class="lang-btn" onclick="setLang('tj')">TJ</button>
+        <button class="lang-btn" onclick="setLang('en')">EN</button>
+      </div>
+      <button class="theme-btn" onclick="toggleTheme()" id="theme-btn" aria-label="Сменить тему">
+        <span class="theme-icon">🌙</span>
+      </button>
+      <a href="#contact" class="btn-cta" data-i18n="nav.cta">Попробовать</a>
+    </div>
+    <button class="burger" onclick="toggleMobile()" id="burger">☰</button>
+  </div>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="#about"      onclick="closeMobile()" data-i18n="nav.about">О нас</a>
+    <a href="#modules"    onclick="closeMobile()" data-i18n="nav.modules">Модули</a>
+    <a href="#chess"      onclick="closeMobile()" data-i18n="nav.chess">Шахматка</a>
+    <a href="#services"   onclick="closeMobile()" data-i18n="nav.services">Услуги</a>
+    <a href="#calculator" onclick="closeMobile()" data-i18n="nav.calc">Цены</a>
+    <a href="#contact"    onclick="closeMobile()" data-i18n="nav.contact">Контакт</a>
+    <div class="lang-switcher" style="margin-top:16px">
+      <button class="lang-btn active" onclick="setLang('ru')">RU</button>
+      <button class="lang-btn" onclick="setLang('tj')">TJ</button>
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-bg">
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="hero-grid"></div>
+  </div>
+  <div class="container hero-inner">
+    <div class="trial-badge" data-i18n="hero.trial">🎁 7 дней бесплатного тестирования</div>
+    <h1 class="hero-h1">
+      <span class="hero-h1-top" data-i18n="hero.line1">Управляйте</span>
+      <span class="hero-h1-main">Silk CRM</span>
+      <span class="hero-h1-sub" data-i18n="hero.line3">для строительных компаний</span>
+    </h1>
+    <p class="hero-desc" data-i18n="hero.desc">Единая платформа для ЖК: шахматка квартир, касса, договоры, склад и бухгалтерия. Всё в облаке — работайте из любой точки.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary" data-i18n="hero.btn1">Начать бесплатно</a>
+      <a href="#chess" class="btn-ghost" data-i18n="hero.btn2">Смотреть шахматку →</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hstat"><span class="hstat-num">$5</span><span class="hstat-lbl" data-i18n="hero.s1">за блок/мес</span></div>
+      <div class="hstat-div"></div>
+      <div class="hstat"><span class="hstat-num">6</span><span class="hstat-lbl" data-i18n="hero.s2">модулей</span></div>
+      <div class="hstat-div"></div>
+      <div class="hstat"><span class="hstat-num">7</span><span class="hstat-lbl" data-i18n="hero.s3">дней бесплатно</span></div>
+      <div class="hstat-div"></div>
+      <div class="hstat"><span class="hstat-num">24/7</span><span class="hstat-lbl" data-i18n="hero.s4">облако</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="section-eyebrow" data-i18n="about.eyebrow">О компании</div>
+        <h2 class="section-h2" data-i18n="about.h2">Axiora Tech — цифровые решения для застройщиков Таджикистана</h2>
+        <p data-i18n="about.p1">Мы разрабатываем и продвигаем <strong>Silk CRM</strong> — профессиональную систему управления жилыми комплексами. Наше решение помогает застройщикам автоматизировать продажи, учёт платежей и документооборот.</p>
+        <p style="margin-top:14px" data-i18n="about.p2">Сайт продукта: <a href="https://binosozcrm.tj" target="_blank" class="link-accent">binosozcrm.tj</a></p>
+        <div class="about-chips">
+          <span class="chip" data-i18n="about.c1">Таджикистан</span>
+          <span class="chip" data-i18n="about.c2">СНГ</span>
+          <span class="chip" data-i18n="about.c3">Облачное ПО</span>
+          <span class="chip" data-i18n="about.c4">PropTech</span>
+        </div>
+      </div>
+      <div class="about-visual">
+        <div class="about-card">
+          <div class="about-card-icon">🏗️</div>
+          <h3 data-i18n="about.card1h">Для застройщиков</h3>
+          <p data-i18n="about.card1p">Контроль всех этапов — от котлована до передачи ключей</p>
+        </div>
+        <div class="about-card about-card-accent">
+          <div class="about-card-icon">📱</div>
+          <h3 data-i18n="about.card2h">Мобильный доступ</h3>
+          <p data-i18n="about.card2p">Работайте с телефона, планшета или ноутбука в любом месте</p>
+        </div>
+        <div class="about-card">
+          <div class="about-card-icon">🔒</div>
+          <h3 data-i18n="about.card3h">Облачная база</h3>
+          <p data-i18n="about.card3p">Все данные в облаке, резервное копирование каждый час</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MODULES -->
+<section class="section section-alt" id="modules">
+  <div class="container">
+    <div class="section-eyebrow" data-i18n="modules.eyebrow">Возможности</div>
+    <h2 class="section-h2" data-i18n="modules.h2">6 модулей Silk CRM — всё включено</h2>
+    <p class="section-desc" data-i18n="modules.desc">Все 6 модулей входят в базовую подписку. Никаких скрытых доплат.</p>
+    <div class="modules-grid">
+      <div class="module-card">
+        <div class="module-num">01</div>
+        <div class="module-icon">♟️</div>
+        <h3 data-i18n="m1.h">Шахматка</h3>
+        <p data-i18n="m1.p">Визуальная карта всех квартир: свободные, проданные, бронь. Клик — и вся история объекта перед вами.</p>
+      </div>
+      <div class="module-card">
+        <div class="module-num">02</div>
+        <div class="module-icon">💰</div>
+        <h3 data-i18n="m2.h">Касса</h3>
+        <p data-i18n="m2.p">Учёт платежей по каждой квартире, рассрочки, задолженности. Автоматические уведомления клиентам.</p>
+      </div>
+      <div class="module-card">
+        <div class="module-num">03</div>
+        <div class="module-icon">📄</div>
+        <h3 data-i18n="m3.h">Договоры</h3>
+        <p data-i18n="m3.p">Шаблоны договоров купли-продажи, рассрочки и аренды. Электронная подпись и архив документов.</p>
+      </div>
+      <div class="module-card">
+        <div class="module-num">04</div>
+        <div class="module-icon">📦</div>
+        <h3 data-i18n="m4.h">Склад</h3>
+        <p data-i18n="m4.p">Управление строительными материалами: приход, расход, остатки. Списание по объектам.</p>
+      </div>
+      <div class="module-card">
+        <div class="module-num">05</div>
+        <div class="module-icon">📊</div>
+        <h3 data-i18n="m5.h">Бухгалтерия</h3>
+        <p data-i18n="m5.p">Финансовые отчёты, статьи расходов, прибыль по объектам. Экспорт в Excel.</p>
+      </div>
+      <div class="module-card module-card-highlight">
+        <div class="module-num">06</div>
+        <div class="module-icon">☁️</div>
+        <h3 data-i18n="m6.h">Облачная база</h3>
+        <p data-i18n="m6.p">Все данные в защищённом облаке. Доступ с любого устройства 24/7 без установки на компьютер.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHESS DEMO -->
+<section class="section" id="chess">
+  <div class="container">
+    <div class="section-eyebrow" data-i18n="chess.eyebrow">Демо</div>
+    <h2 class="section-h2" data-i18n="chess.h2">Интерактивная шахматка — ЖК «Соҳилӣ»</h2>
+    <p class="section-desc" data-i18n="chess.desc">Нажмите на квартиру, чтобы увидеть детали. Это живая демо-версия модуля Silk CRM.</p>
+
+    <div class="chess-controls">
+      <div class="chess-legend">
+        <span class="cl-item"><span class="cl-dot free"></span><span data-i18n="chess.free">Свободна</span></span>
+        <span class="cl-item"><span class="cl-dot sold"></span><span data-i18n="chess.sold">Продана</span></span>
+        <span class="cl-item"><span class="cl-dot reserve"></span><span data-i18n="chess.reserve">Бронь</span></span>
+        <span class="cl-item"><span class="cl-dot installment"></span><span data-i18n="chess.inst">Рассрочка</span></span>
+      </div>
+      <div class="chess-filters">
+        <button class="cf-btn active" onclick="chessFilter('all',this)" data-i18n="chess.all">Все</button>
+        <button class="cf-btn" onclick="chessFilter('free',this)" data-i18n="chess.free">Свободна</button>
+        <button class="cf-btn" onclick="chessFilter('sold',this)" data-i18n="chess.sold">Продана</button>
+        <button class="cf-btn" onclick="chessFilter('reserve',this)" data-i18n="chess.reserve">Бронь</button>
+      </div>
+    </div>
+
+    <div class="chess-wrap">
+      <div class="chess-floors" id="chess-floors"></div>
+      <div class="chess-info" id="chess-info">
+        <div class="chess-info-placeholder">
+          <div style="font-size:2.5rem;margin-bottom:12px">♟️</div>
+          <p data-i18n="chess.select">Выберите квартиру для просмотра деталей</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section section-alt" id="services">
+  <div class="container">
+    <div class="section-eyebrow" data-i18n="srv.eyebrow">Дополнительно</div>
+    <h2 class="section-h2" data-i18n="srv.h2">Кастомные разработки под ваш бизнес</h2>
+    <p class="section-desc" data-i18n="srv.desc">Помимо Silk CRM мы создаём индивидуальные цифровые продукты. Цена — договорная, по техническому заданию.</p>
+    <div class="services-grid">
+      <div class="svc-card">
+        <div class="svc-icon">🤖</div>
+        <div class="svc-price" data-i18n="srv.price">Договорная (По ТЗ)</div>
+        <h3 data-i18n="srv.bot.h">Telegram-боты</h3>
+        <p data-i18n="srv.bot.p">Боты для продаж квартир, уведомлений клиентам, приёма заявок, CRM-интеграции и автоматизации менеджеров.</p>
+        <ul class="svc-list">
+          <li data-i18n="srv.bot.l1">Бот-менеджер ЖК</li>
+          <li data-i18n="srv.bot.l2">Уведомления о платежах</li>
+          <li data-i18n="srv.bot.l3">Приём заявок на просмотр</li>
+        </ul>
+        <a href="#contact" class="svc-btn" data-i18n="srv.discuss">Обсудить проект</a>
+      </div>
+      <div class="svc-card svc-card-featured">
+        <div class="svc-badge" data-i18n="srv.popular">Популярно</div>
+        <div class="svc-icon">🌐</div>
+        <div class="svc-price" data-i18n="srv.price">Договорная (По ТЗ)</div>
+        <h3 data-i18n="srv.site.h">Сайты для ЖК</h3>
+        <p data-i18n="srv.site.p">Продающие сайты жилых комплексов с онлайн-шахматкой, формой заявки и интеграцией с Silk CRM.</p>
+        <ul class="svc-list">
+          <li data-i18n="srv.site.l1">Онлайн-шахматка</li>
+          <li data-i18n="srv.site.l2">Форма заявки</li>
+          <li data-i18n="srv.site.l3">Мультиязычность</li>
+        </ul>
+        <a href="#contact" class="svc-btn" data-i18n="srv.discuss">Обсудить проект</a>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">⚙️</div>
+        <div class="svc-price" data-i18n="srv.price">Договорная (По ТЗ)</div>
+        <h3 data-i18n="srv.crm.h">Индивидуальные CRM</h3>
+        <p data-i18n="srv.crm.p">Разработка CRM-систем под специфику вашего бизнеса: логистика, торговля, аренда, управление персоналом.</p>
+        <ul class="svc-list">
+          <li data-i18n="srv.crm.l1">Анализ бизнес-процессов</li>
+          <li data-i18n="srv.crm.l2">Разработка под ТЗ</li>
+          <li data-i18n="srv.crm.l3">Интеграция с 1С / банком</li>
+        </ul>
+        <a href="#contact" class="svc-btn" data-i18n="srv.discuss">Обсудить проект</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CALCULATOR -->
+<section class="section" id="calculator">
+  <div class="container">
+    <div class="section-eyebrow" data-i18n="calc.eyebrow">Стоимость</div>
+    <h2 class="section-h2" data-i18n="calc.h2">Калькулятор подписки</h2>
+    <p class="section-desc" data-i18n="calc.desc">$5 за один блок (дом) в месяц. Все 6 модулей включены.</p>
+    <div class="calc-wrap">
+      <div class="calc-left">
+        <div class="calc-field">
+          <label data-i18n="calc.blocks">Количество блоков (домов)</label>
+          <div class="calc-stepper">
+            <button onclick="changeBlocks(-1)">−</button>
+            <input type="number" id="calc-blocks" value="1" min="1" max="100" oninput="calcPrice()">
+            <button onclick="changeBlocks(1)">+</button>
+          </div>
+        </div>
+        <div class="calc-field">
+          <label data-i18n="calc.months">Срок подписки</label>
+          <div class="calc-months">
+            <button class="cm-btn active" data-m="1" onclick="setMonths(1,this)" data-i18n="calc.m1">1 мес</button>
+            <button class="cm-btn" data-m="3" onclick="setMonths(3,this)" data-i18n="calc.m3">3 мес</button>
+            <button class="cm-btn" data-m="6" onclick="setMonths(6,this)">6 мес <span class="disc">−10%</span></button>
+            <button class="cm-btn" data-m="12" onclick="setMonths(12,this)">12 мес <span class="disc">−20%</span></button>
+          </div>
+        </div>
+        <div class="calc-trial">
+          <span class="trial-ico">🎁</span>
+          <span data-i18n="calc.trial">Первые 7 дней — бесплатно для всех новых клиентов</span>
+        </div>
+      </div>
+      <div class="calc-right">
+        <div class="calc-result">
+          <div class="calc-r-label" data-i18n="calc.total">Итого в месяц</div>
+          <div class="calc-r-price" id="calc-price">$5</div>
+          <div class="calc-r-total" id="calc-total"></div>
+          <div class="calc-r-economy" id="calc-economy" style="display:none"></div>
+          <div class="calc-breakdown" id="calc-breakdown"></div>
+          <a href="#contact" class="btn-primary" style="width:100%;text-align:center;margin-top:20px;display:block" data-i18n="calc.btn">Подключиться</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section section-alt" id="contact">
+  <div class="container">
+    <div class="section-eyebrow" data-i18n="contact.eyebrow">Связаться</div>
+    <h2 class="section-h2" data-i18n="contact.h2">Начнём сотрудничество</h2>
+    <p class="section-desc" data-i18n="contact.desc">Оставьте заявку и мы свяжемся с вами в течение 1 часа. Заявки отправляются в наш Telegram-бот мгновенно.</p>
+    <div class="contact-grid">
+      <form class="contact-form" onsubmit="submitForm(event)" id="contact-form">
+        <div class="cf-row">
+          <div class="cf-field">
+            <label data-i18n="form.name">Имя *</label>
+            <input type="text" id="cf-name" required placeholder="Ваше имя" data-i18n-ph="form.name_ph">
+          </div>
+          <div class="cf-field">
+            <label data-i18n="form.phone">Телефон *</label>
+            <input type="tel" id="cf-phone" required placeholder="+992 XX XXX XX XX">
+          </div>
+        </div>
+        <div class="cf-field">
+          <label data-i18n="form.company">Компания / ЖК</label>
+          <input type="text" id="cf-company" placeholder="Название компании или ЖК" data-i18n-ph="form.company_ph">
+        </div>
+        <div class="cf-field">
+          <label data-i18n="form.service">Интересует</label>
+          <select id="cf-service">
+            <option value="silk_crm" data-i18n="form.opt1">Silk CRM</option>
+            <option value="telegram_bot" data-i18n="form.opt2">Telegram-бот</option>
+            <option value="website" data-i18n="form.opt3">Сайт для ЖК</option>
+            <option value="custom_crm" data-i18n="form.opt4">Индивидуальная CRM</option>
+            <option value="other" data-i18n="form.opt5">Другое</option>
+          </select>
+        </div>
+        <div class="cf-field">
+          <label data-i18n="form.message">Сообщение / ТЗ</label>
+          <textarea id="cf-message" rows="4" placeholder="Опишите ваш проект или задачу..." data-i18n-ph="form.msg_ph"></textarea>
+        </div>
+        <button type="submit" class="btn-primary form-submit" id="form-submit" data-i18n="form.submit">Отправить заявку</button>
+        <div class="form-success" id="form-success" style="display:none" data-i18n="form.success">✅ Заявка отправлена! Мы свяжемся с вами в ближайшее время.</div>
+        <div class="form-error" id="form-error" style="display:none" data-i18n="form.error">❌ Ошибка. Позвоните нам напрямую.</div>
+      </form>
+      <div class="contact-info">
+        <div class="ci-card">
+          <div class="ci-icon">📞</div>
+          <h4 data-i18n="ci.phone">Телефон / WhatsApp</h4>
+          <a href="tel:+992711822211" class="ci-link">+992 711 82 22 11</a>
+        </div>
+        <div class="ci-card">
+          <div class="ci-icon">📱</div>
+          <h4 data-i18n="ci.tg">Telegram</h4>
+          <a href="https://t.me/axiora_tech" target="_blank" class="ci-link">@axiora_tech</a>
+        </div>
+        <div class="ci-card">
+          <div class="ci-icon">🌐</div>
+          <h4 data-i18n="ci.web">Сайт продукта</h4>
+          <a href="https://binosozcrm.tj" target="_blank" class="ci-link">binosozcrm.tj</a>
+        </div>
+        <div class="ci-card ci-card-trial">
+          <div style="font-size:2rem;margin-bottom:10px">🎁</div>
+          <h4 data-i18n="ci.trial.h">7 дней бесплатно</h4>
+          <p data-i18n="ci.trial.p">Тестируйте все 6 модулей без оплаты. Никаких обязательств.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-logo">
+      <div class="logo-mark">A</div>
+      <span class="logo-text">Axiora<span class="logo-accent">Tech</span></span>
+    </div>
+    <div class="footer-links">
+      <a href="https://binosozcrm.tj" target="_blank">binosozcrm.tj</a>
+      <a href="tel:+992711822211">+992 711 82 22 11</a>
+      <a href="https://t.me/axiora_tech" target="_blank">Telegram</a>
+    </div>
+    <p class="footer-copy">© 2025 Axiora Tech. <span data-i18n="footer.rights">Все права защищены.</span></p>
+  </div>
+</footer>
+
+<script src="js/i18n.js"></script>
+<script src="js/chess.js"></script>
+<script src="js/calc.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
