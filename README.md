@@ -90,3 +90,16 @@ npm run dev   # или npm start
 - Телефон: +992 711 82 22 11
 - Telegram: @axiora_tech
 - Сайт продукта: binosozcrm.tj
+
+---
+
+## Публикация
+
+- Фронтенд: GitHub Pages — https://safiullohmirzoev.github.io/axiora-tech/
+- Backend на Render: https://dashboard.render.com/blueprint/new?repo=https://github.com/SafiullohMirzoev/axiora-tech
+
+При создании backend в Render задайте переменные:
+
+- `TELEGRAM_BOT_TOKEN`
+- `TELEGRAM_CHAT_ID`
+- `FRONTEND_URL=https://safiullohmirzoev.github.io`
