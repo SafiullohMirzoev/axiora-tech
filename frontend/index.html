@@ -36,7 +36,7 @@
       </button>
       <a href="#contact" class="btn-cta" data-i18n="nav.cta">Попробовать</a>
     </div>
-    <button class="burger" onclick="toggleMobile()" id="burger">☰</button>
+    <button class="burger" onclick="toggleMobile()" id="burger" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobile-menu">☰</button>
   </div>
   <div class="mobile-menu" id="mobile-menu">
     <a href="#about"      onclick="closeMobile()" data-i18n="nav.about">О нас</a>
@@ -191,7 +191,9 @@
     </div>
 
     <div class="chess-wrap">
-      <div class="chess-floors" id="chess-floors"></div>
+      <div class="chess-floors-wrap">
+        <div class="chess-floors" id="chess-floors"></div>
+      </div>
       <div class="chess-info" id="chess-info">
         <div class="chess-info-placeholder">
           <div style="font-size:2.5rem;margin-bottom:12px">♟️</div>
@@ -376,6 +378,7 @@
   </div>
 </footer>
 
+<script src="js/config.js"></script>
 <script src="js/i18n.js"></script>
 <script src="js/chess.js"></script>
 <script src="js/calc.js"></script>

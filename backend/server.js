@@ -10,7 +10,7 @@ const app = express();
 app.use(cors({ origin: process.env.FRONTEND_URL || '*' }));
 app.use(express.json());
 
-// Serve frontend
+// Serve frontend for local development
 app.use(express.static(path.join(__dirname, '../frontend')));
 
 // Rate limit: 5 form submissions per 10 min per IP
@@ -77,12 +77,11 @@ ${message || '—'}
       res.json({ success: true, message: 'Заявка отправлена в Telegram' });
     } else {
       console.warn('Telegram error:', result);
-      // Still return success to user — log the lead
-      res.json({ success: true, message: 'Заявка получена' });
+      res.status(502).json({ success: false, error: 'Не удалось отправить заявку в Telegram' });
     }
   } catch (err) {
     console.error('Contact form error:', err);
-    res.json({ success: true, message: 'Заявка получена' });
+    res.status(502).json({ success: false, error: 'Не удалось отправить заявку в Telegram' });
   }
 });
 
@@ -91,9 +90,9 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', app: 'Axiora Tech', time: new Date().toISOString() });
 });
 
-// ── SPA fallback ───────────────────────────────────────────────
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend/index.html'));
+// ── Unknown API route ─────────────────────────────────────────
+app.use((req, res) => {
+  res.status(404).json({ error: 'Not found' });
 });
 
 // ── Start ──────────────────────────────────────────────────────

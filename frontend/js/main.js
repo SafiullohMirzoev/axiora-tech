@@ -16,11 +16,39 @@ function toggleTheme() {
 
 // ── MOBILE NAV ────────────────────────────────────────────────
 function toggleMobile() {
-  document.getElementById('mobile-menu').classList.toggle('open');
+  const menu = document.getElementById('mobile-menu');
+  const burger = document.getElementById('burger');
+  const isOpen = menu.classList.toggle('open');
+  burger?.setAttribute('aria-expanded', String(isOpen));
+  burger?.setAttribute('aria-label', isOpen ? 'Закрыть меню' : 'Открыть меню');
+  burger.textContent = isOpen ? '✕' : '☰';
+  document.body.classList.toggle('menu-open', isOpen);
 }
 function closeMobile() {
-  document.getElementById('mobile-menu').classList.remove('open');
+  const menu = document.getElementById('mobile-menu');
+  const burger = document.getElementById('burger');
+  menu.classList.remove('open');
+  burger?.setAttribute('aria-expanded', 'false');
+  burger?.setAttribute('aria-label', 'Открыть меню');
+  if (burger) burger.textContent = '☰';
+  document.body.classList.remove('menu-open');
 }
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeMobile();
+});
+
+document.addEventListener('click', e => {
+  const menu = document.getElementById('mobile-menu');
+  const burger = document.getElementById('burger');
+  if (menu?.classList.contains('open') && !menu.contains(e.target) && !burger?.contains(e.target)) {
+    closeMobile();
+  }
+});
+
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 900) closeMobile();
+});
 
 // ── NAV SCROLL ────────────────────────────────────────────────
 window.addEventListener('scroll', () => {
@@ -29,12 +57,6 @@ window.addEventListener('scroll', () => {
     ? '0 2px 20px rgba(0,0,0,0.3)'
     : 'none';
 });
-
-// ── FORM → TELEGRAM ───────────────────────────────────────────
-// IMPORTANT: Replace BOT_TOKEN and CHAT_ID with your real values.
-// To get CHAT_ID: message @userinfobot on Telegram.
-const TG_BOT_TOKEN = 'YOUR_BOT_TOKEN_HERE';  // ← вставьте токен бота
-const TG_CHAT_ID   = 'YOUR_CHAT_ID_HERE';    // ← вставьте chat_id
 
 async function submitForm(e) {
   e.preventDefault();
@@ -48,57 +70,36 @@ async function submitForm(e) {
   const service = document.getElementById('cf-service').value;
   const message = document.getElementById('cf-message').value.trim();
 
-  const serviceLabels = {
-    silk_crm:   'Silk CRM',
-    telegram_bot: 'Telegram-бот',
-    website:    'Сайт для ЖК',
-    custom_crm: 'Индивидуальная CRM',
-    other:      'Другое',
-  };
-
-  const text = `
-🏢 *Новая заявка — Axiora Tech*
-━━━━━━━━━━━━━━━━
-👤 *Имя:* ${name}
-📞 *Телефон:* ${phone}
-🏗 *Компания/ЖК:* ${company || '—'}
-💼 *Интересует:* ${serviceLabels[service] || service}
-📝 *Сообщение:*
-${message || '—'}
-━━━━━━━━━━━━━━━━
-🌐 Источник: binosozcrm.tj
-  `.trim();
-
   btn.textContent = '⏳ Отправка...';
   btn.disabled = true;
   success.style.display = 'none';
   errEl.style.display = 'none';
 
   try {
-    const resp = await fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage`, {
+    const apiBase = window.AXIORA_API_URL || '';
+    const resp = await fetch(`${apiBase}/api/contact`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        chat_id: TG_CHAT_ID,
-        text,
-        parse_mode: 'Markdown',
+        name,
+        phone,
+        company,
+        service,
+        message,
       }),
     });
 
     const data = await resp.json();
 
-    if (data.ok) {
+    if (resp.ok && data.success) {
       success.style.display = 'block';
       document.getElementById('contact-form').reset();
     } else {
-      throw new Error(data.description || 'Telegram API error');
+      throw new Error(data.error || 'Contact API error');
     }
   } catch (err) {
-    console.warn('Telegram send failed:', err.message);
-    // Fallback: show success anyway (form data is captured)
-    // In production, also send to backend /api/contact
-    success.style.display = 'block'; // Remove this line if you want strict error
-    // errEl.style.display = 'block';
+    console.warn('Contact form failed:', err.message);
+    errEl.style.display = 'block';
   } finally {
     btn.textContent = t('form.submit');
     btn.disabled = false;
